@@ -18,8 +18,13 @@ DOWNLOAD_FOLDER = './downloads'
 app.config['DOWNLOAD_FOLDER'] = DOWNLOAD_FOLDER
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+
 if not os.path.exists(DOWNLOAD_FOLDER):
     os.makedirs(DOWNLOAD_FOLDER)
+
+
 
 model = joblib.load('./saved_models/mk1plus.pkl')
 
