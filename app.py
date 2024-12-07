@@ -175,6 +175,9 @@ def extract_metrics_from_file(file_path):
         return f"There is a syntax error in your code. Please check it. Error: {str(e)}"
     except Exception as e:
         return f"An unknown error occurred. Please check your code. Error: {str(e)}"
+    finally:
+        if os.path.exists(file_path):
+            os.remove(file_path)
 
     metrics_dict = analyzer.get_metrics()
 
@@ -250,6 +253,9 @@ def predict():
 
     else:
         return redirect(request.url)
+
+    if file_path and os.path.exists(file_path):
+        os.remove(file_path)
 
     scaled_data = scaler.transform(input_data)
     prediction = model.predict(scaled_data)
