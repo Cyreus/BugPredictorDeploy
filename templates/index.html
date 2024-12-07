@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Bug Predictor</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/templatemo-574-mexant.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/owl.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/animate.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css">
+
+<!--    <link rel="stylesheet" href="assets/css/fontawesome.css">-->
+<!--    <link rel="stylesheet" href="assets/css/templatemo-574-mexant.css">-->
+<!--    <link rel="stylesheet" href="assets/css/owl.css">-->
+<!--    <link rel="stylesheet" href="assets/css/animate.css">-->
+<!--    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css">-->
+<!--
+
+TemplateMo 574 Mexant
+
+https://templatemo.com/tm-574-mexant
+
+-->
+  </head>
+
+<body>
+
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+   <div id="bugPredictorDiv" style="display: flex; align-items: center; padding: 50px; margin: 10px;">
+    <img id="bugImage" style="width: 100px; height: 100px;" src="static/assets/images/radio_bug-512.png" alt="">
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <b id="bugPredictor" style="font-size: 48px; color: #ff511a; padding-top: 29px;">Bug Predictor</b>
+   </div>
+
+
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <nav class="main-nav">
+                      <!-- ***** Logo Start ***** -->
+                      <a href="{{ url_for('index') }}" class="logo">
+
+                      </a>
+
+
+                      <!-- ***** Logo End ***** -->
+
+                      <!-- ***** Menu Start ***** -->
+                      <ul class="nav">
+
+                      </ul>        
+                      <a class='menu-trigger'>
+                          <span>Menu</span>
+                      </a>
+                      <!-- ***** Menu End ***** -->
+                  </nav>
+              </div>
+          </div>
+      </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <!-- ***** Main Banner Area Start ***** -->
+  <div class="swiper-container" id="top">
+
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="slide-inner" style="background-image:url(assets/images/slide-01.jpg)">
+          <div class="container">
+            <br>
+             <div style="">
+
+             </div>
+
+            <div class="row">
+              <div class="col-lg-8">
+
+                <div class="header-text">
+                  <br><br> <br><br>
+                  <hr>
+                  <h2>Upload your&nbsp;code <br><em>page</em> or <em>link</em> and we will analyze it!</h2>
+                  <div class="div-dec"></div>
+                  <p style="font-size:20px;">With the bug predictor, your code is now in safe hands. Upload your code, and let us make bug detections for you!</p>
+                  <div class="buttons">
+                    <div class="green-button">
+                      <a href="{{url_for('upload')}}">Upload Your Code!</a>
+                    </div>
+                    <div class="orange-button">
+                      <a href="{{url_for('contact')}}">Contact Us</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="slide-inner" style="background-image:url(assets/images/slide-02.jpg)">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="header-text">
+                  <h2><em>Powered</em> with <br> Random <em>Forest</em> Algorithm</h2>
+                  <div class="div-dec"></div>
+                  <p style="font-size:20px;">With this, your powerful software is now even stronger. Become unbeatable with our bug prediction model without extra effort!</p>
+                  <div class="buttons">
+                    <div class="green-button">
+                      <a href="{{url_for('upload')}}">Upload Your Code!</a>
+                    </div>
+                    <div class="orange-button">
+                      <a href="{{url_for('contact')}}">Contact Us</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="slide-inner" style="background-image:url(assets/images/slide-03.jpg)">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="header-text">
+
+                  <h2>Reach the<br>Top of the <em>Industry!</em></h2>
+                  <div class="div-dec"></div>
+                  <p style="font-size:20px;">Let your company shine among competing firms. Contact us now and take advantage of our exclusive discounts for businesses!</p>
+                  <div class="buttons">
+                    <div class="green-button">
+                      <a href="{{url_for('upload')}}">Upload Your Code!</a>
+                    </div>
+                    <div class="orange-button">
+                      <a href="{{url_for('contact')}}">Contact Us</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-button-next swiper-button-white"></div>
+    <div class="swiper-button-prev swiper-button-white"></div>
+  </div>
+
+  <!-- ***** Main Banner Area End ***** -->
+
+  <section class="services" id="services">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="service-item">
+            <i class="fa-hashtag"></i>
+            <h4>Cbo:</h4>
+            <p><b style="font-size:30px;"><em>{{cbo}}</em></b></p>
+            <p>Measures the number of classes a given class is dependent on. High CBO indicates greater inter-class dependencies.</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="service-item">
+            <i class="fa-hashtag"></i>
+            <h4>Dit:</h4>
+            <p><b style="font-size:30px;"><em>{{dit}}</em></b></p>
+            <p>Represents the inheritance depth of a class in the hierarchy. A deeper tree implies more inherited behavior and complexity.</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="service-item">
+            <i class="fa-hashtag"></i>
+            <h4>Lcom:</h4>
+            <p><b style="font-size:30px;"><em>{{lcom}}</em></b></p>
+            <p>Measures the cohesion between methods within a class. High LCOM indicates low cohesion and possibly poor class design.</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="service-item">
+            <i class="fa-hashtag"></i>
+            <h4>Noc:</h4>
+            <p><b style="font-size:30px;"><em>{{noc}}</em></b></p>
+            <p>How many children a class in source code.(Number of Children)</p>
+            <br>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="service-item">
+            <i class="fa-hashtag"></i>
+            <h4>Number of attributes:</h4>
+            <p><b style="font-size:30px;"><em>{{noa}}</em></b></p>
+            <p>Indicates the number of attributes (fields) in a class.</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="service-item">
+            <i class="fa-hashtag"></i>
+            <h4>Number of methods:</h4>
+            <p><b style="font-size:30px;"><em>{{nom}}</em></b></p>
+            <p>How many methods in source code.</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="service-item">
+            <i class="fa-hashtag"></i>
+            <h4>Rfc:</h4>
+              <p><b style="font-size:30px;"><em>{{rfc}}</em></b></p>
+
+            <p>Measures the number of potential methods that could be invoked in response to a message sent to an object of class</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="service-item">
+            <i class="fa-hashtag"></i>
+            <h4>Wmc:</h4>
+            <p><b style="font-size:30px;"><em>{{wmc}}</em></b></p>
+            <p>Measures the complexity of a class by summing the complexity of its methods.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="partners">
+    <div class="container">
+      <div class="row">
+         <div class="col-lg-2 col-sm-4 col-6">
+          <div class="item">
+
+          </div>
+        </div>
+         <div class="col-lg-2 col-sm-4 col-6">
+          <div class="item">
+
+          </div>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="col-lg-2 col-sm-4 col-6">
+          <div class="item">
+              <b style="color:white;font-size:50px;">Result:</b>
+          </div>
+        </div>
+
+         <div class="col-lg-2 col-sm-4 col-6">
+          <div class="item">
+            <b style="font-size:50px; color:
+              {% if result == 0 %}
+                  green;
+              {% elif result == 1 %}
+                  yellow;
+              {% elif result == 2 %}
+                  red;
+              {% endif %}
+              ">
+                  {% if result == 0 %}
+                      Low Priority
+                  {% elif result == 1 %}
+                      Moderate Priority
+                  {% elif result == 2 %}
+                      Critical Priority!!!
+                  {% endif %}
+              </b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright © 2024 Bandırma Onyedi Eylül University All Rights Reserved.
+          
+          <br>Designed by <a title="CSS Templates" rel="sponsored" href="https://github.com/Cyreus" target="_blank">Cyreus</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/isotope.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/owl-carousel.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/swiper.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/tabs.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/custom.js') }}"></script>
+    <script>
+        var interleaveOffset = 0.5;
+
+      var swiperOptions = {
+        loop: true,
+        speed: 1000,
+        grabCursor: true,
+        watchSlidesProgress: true,
+        mousewheelControl: true,
+        keyboardControl: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        },
+        on: {
+          progress: function() {
+            var swiper = this;
+            for (var i = 0; i < swiper.slides.length; i++) {
+              var slideProgress = swiper.slides[i].progress;
+              var innerOffset = swiper.width * interleaveOffset;
+              var innerTranslate = slideProgress * innerOffset;
+              swiper.slides[i].querySelector(".slide-inner").style.transform =
+                "translate3d(" + innerTranslate + "px, 0, 0)";
+            }      
+          },
+          touchStart: function() {
+            var swiper = this;
+            for (var i = 0; i < swiper.slides.length; i++) {
+              swiper.slides[i].style.transition = "";
+            }
+          },
+          setTransition: function(speed) {
+            var swiper = this;
+            for (var i = 0; i < swiper.slides.length; i++) {
+              swiper.slides[i].style.transition = speed + "ms";
+              swiper.slides[i].querySelector(".slide-inner").style.transition =
+                speed + "ms";
+            }
+          }
+        }
+      };
+
+      var swiper = new Swiper(".swiper-container", swiperOptions);
+    </script>
+<!--   <script>-->
+<!--    const bugPredictorDiv = document.getElementById("bugPredictorDiv");-->
+<!--    let lastScrollTop = 0;-->
+
+<!--    window.addEventListener("scroll", function() {-->
+<!--        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;-->
+
+<!--        if (scrollTop > 0) {-->
+<!--            bugPredictorDiv.style.display = 'none';-->
+<!--        } else {-->
+<!--            bugPredictorDiv.style.display = 'flex';-->
+<!--        }-->
+
+<!--        lastScrollTop = scrollTop;-->
+<!--    });-->
+<!--</script>-->
+  <script>
+      window.addEventListener('scroll', function () {
+    let scrollY = window.scrollY;
+    let opacity = Math.max(0, 1 - scrollY / 300); // Sayfa aşağı kaydıkça opacity azalır
+
+    // Resmin ve yazının opaklığını ayarla
+    document.getElementById('bugImage').style.opacity = opacity;
+    document.getElementById('bugPredictor').style.opacity = opacity;
+});
+
+
+  </script>
+
+
+
+
+
+  </body>
+</html>
