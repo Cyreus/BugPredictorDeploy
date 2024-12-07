@@ -12,7 +12,14 @@ import chardet
 app = Flask(__name__)
 
 UPLOAD_FOLDER = './uploads'
+
+DOWNLOAD_FOLDER = './downloads'
+
+app.config['DOWNLOAD_FOLDER'] = DOWNLOAD_FOLDER
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+if not os.path.exists(DOWNLOAD_FOLDER):
+    os.makedirs(DOWNLOAD_FOLDER)
 
 model = joblib.load('./saved_models/mk1plus.pkl')
 
