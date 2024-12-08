@@ -189,7 +189,7 @@ def extract_metrics_from_file(file_path):
     analyzer = CodeAnalyzer()
 
     try:
-        analyzer.analyze(code)  # Analyze the code
+        analyzer.analyze(code)
     except IndentationError as e:
         return f"There is an indentation error in your code. Please check it. Error: {str(e)}"
     except SyntaxError as e:
