@@ -8,6 +8,7 @@ import requests
 from urllib.parse import urlparse
 import chardet
 import nbformat
+import gc
 
 app = Flask(__name__)
 
@@ -198,6 +199,7 @@ def extract_metrics_from_file(file_path):
     finally:
         if os.path.exists(file_path):
             os.remove(file_path)
+            gc.collect()
 
     metrics_dict = analyzer.get_metrics()
 
@@ -280,6 +282,7 @@ def predict():
 
     if file_path and os.path.exists(file_path):
         os.remove(file_path)
+        gc.collect()
 
     scaled_data = scaler.transform(input_data)
     prediction = model.predict(scaled_data)
