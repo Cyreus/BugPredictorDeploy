@@ -7,7 +7,7 @@ from collections import defaultdict
 import requests
 from urllib.parse import urlparse
 import chardet
-
+import nbformat
 
 app = Flask(__name__)
 
@@ -24,6 +24,11 @@ if not os.path.exists(UPLOAD_FOLDER):
 if not os.path.exists(DOWNLOAD_FOLDER):
     os.makedirs(DOWNLOAD_FOLDER)
 
+ALLOWED_EXTENSIONS = {'py', 'ipynb'}
+
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 model = joblib.load('./saved_models/mk1plus.pkl')
@@ -77,7 +82,6 @@ class CodeAnalyzer(ast.NodeVisitor):
             for stmt in ast.walk(node):
                 if isinstance(stmt, ast.Call) and isinstance(stmt.func, ast.Attribute):
                     self.method_calls[node.name].add(stmt.func.attr)
-
 
         self.generic_visit(node)
 
@@ -152,14 +156,30 @@ class CodeAnalyzer(ast.NodeVisitor):
         return self.metrics
 
 
+def extract_code_from_ipynb(file_path, encoding):
+    try:
+        with open(file_path, 'r', encoding=encoding) as f:
+            nb = nbformat.read(f, as_version=4)
+        code_cells = [cell['source'] for cell in nb.cells if cell['cell_type'] == 'code']
+        return '\n\n'.join(code_cells)
+    except Exception as e:
+        return f"ipynb file reading error: {str(e)}"
+
+
 def extract_metrics_from_file(file_path):
     try:
         rawdata = open(file_path, 'rb').read()
         result = chardet.detect(rawdata)
         encoding = result['encoding']
 
-        with open(file_path, "r", encoding=encoding) as f:
-            code = f.read()
+        extension = file_path.rsplit('.', 1)[1].lower()
+        if extension == 'ipynb':
+            code = extract_code_from_ipynb(file_path, encoding)
+            if isinstance(code, str) and code.startswith("ipynb dosyasını okuma hatası"):
+                return code
+        else:
+            with open(file_path, "r", encoding=encoding) as f:
+                code = f.read()
 
     except (UnicodeDecodeError, Exception) as e:
         print(f"Dosya okuma hatası: {e}")
@@ -182,7 +202,7 @@ def extract_metrics_from_file(file_path):
     metrics_dict = analyzer.get_metrics()
 
     metrics_dict["fanIn"] = sum(metrics_dict["fanIn"].values()) if isinstance(metrics_dict["fanIn"], defaultdict) else \
-    metrics_dict["fanIn"]
+        metrics_dict["fanIn"]
     metrics_dict["fanOut"] = sum(
         len(v) if hasattr(v, "__len__") else 1 for v in metrics_dict["fanOut"].values()) if isinstance(
         metrics_dict["fanOut"], defaultdict) else metrics_dict["fanOut"]
@@ -235,6 +255,10 @@ def upload():
 def predict():
     if 'file' in request.files and request.files['file'].filename != '':
         file = request.files['file']
+
+        if not allowed_file(file.filename):
+            return render_template('upload.html', error="You can upload just python file")
+
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         file.save(file_path)
         input_data = extract_metrics_from_file(file_path)
