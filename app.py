@@ -175,14 +175,14 @@ def extract_metrics_from_file(file_path):
         extension = file_path.rsplit('.', 1)[1].lower()
         if extension == 'ipynb':
             code = extract_code_from_ipynb(file_path, encoding)
-            if isinstance(code, str) and code.startswith("ipynb dosyasını okuma hatası"):
+            if isinstance(code, str) and code.startswith("ipynb reading file error!"):
                 return code
         else:
             with open(file_path, "r", encoding=encoding) as f:
                 code = f.read()
 
     except (UnicodeDecodeError, Exception) as e:
-        print(f"Dosya okuma hatası: {e}")
+        print(f"file reading error!: {e}")
         return None
 
     analyzer = CodeAnalyzer()
@@ -257,7 +257,7 @@ def predict():
         file = request.files['file']
 
         if not allowed_file(file.filename):
-            return render_template('upload.html', error="You can upload just python file")
+            return render_template('upload.html', error="You can upload just python file!")
 
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         file.save(file_path)
@@ -269,7 +269,7 @@ def predict():
         github_url = request.form['github_url']
         file_path = download_github_file(github_url)
         if not file_path:
-            return render_template('upload.html', error="Geçersiz GitHub linki")
+            return render_template('upload.html', error="invalid github link!")
         input_data = extract_metrics_from_file(file_path)
 
         if isinstance(input_data, str):
